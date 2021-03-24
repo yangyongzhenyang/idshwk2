@@ -1,0 +1,3 @@
+alert tcp any any -> any 3399 (msg:"maybe bot inital"; content:"login"; nocase; content:"Initial"; nocase; flowbits:set,maybe_bot; flowbits:noalert; sid:1000000)
+alert tcp any any -> any 3399 (msg:"bot founded"; flowbits:isset,maybe_bot; pcre:"/(\d){1,3}(\.(\d){1,3}){3}\x3a(\d){1,5}/"; sid:1000001; )
+
